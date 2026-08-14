@@ -14,6 +14,7 @@ import Footer from './components/Footer';
 import FloatingButtons from './components/FloatingButtons';
 import QuoteModal from './components/QuoteModal';
 import LightboxModal from './components/LightboxModal';
+import AnimatedLogoBg from './components/AnimatedLogoBg';
 import { siteConfig } from './config/siteConfig';
 
 export default function App() {
@@ -43,7 +44,9 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 selection:bg-amber-500 selection:text-slate-950 font-sans">
+    <div className="min-h-screen bg-slate-950 text-slate-100 selection:bg-amber-500 selection:text-slate-950 font-sans relative">
+      {/* Animated Logo Watermark Background */}
+      <AnimatedLogoBg />
       
       {/* Sticky Navigation Bar */}
       <Navbar onOpenQuoteModal={() => handleOpenQuoteModal()} />
