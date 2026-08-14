@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -9,6 +9,7 @@ import Process from './components/Process';
 import Sectors from './components/Sectors';
 import Gallery from './components/Gallery';
 import QuoteCTA from './components/QuoteCTA';
+import MapSection from './components/MapSection';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import FloatingButtons from './components/FloatingButtons';
@@ -21,6 +22,7 @@ export default function App() {
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
   const [selectedServiceForQuote, setSelectedServiceForQuote] = useState(null);
   const [lightboxItem, setLightboxItem] = useState(null);
+  const mainRef = useRef(null);
 
   const handleOpenQuoteModal = (service = null) => {
     setSelectedServiceForQuote(service);
@@ -43,6 +45,33 @@ export default function App() {
     });
   };
 
+  // Global scroll-reveal observer for all sections
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+          }
+        });
+      },
+      { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    const selectors = [
+      '.scroll-reveal',
+      '.scroll-reveal-left',
+      '.scroll-reveal-right',
+      '.scroll-reveal-scale',
+      '.stagger-children',
+    ];
+
+    const elements = mainRef.current?.querySelectorAll(selectors.join(', '));
+    elements?.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 selection:bg-amber-500 selection:text-slate-950 font-sans relative">
       {/* Animated Logo Watermark Background */}
@@ -52,7 +81,7 @@ export default function App() {
       <Navbar onOpenQuoteModal={() => handleOpenQuoteModal()} />
 
       {/* Main Content Sections */}
-      <main>
+      <main ref={mainRef}>
         {/* Section 1 & 2: Hero */}
         <Hero onOpenQuoteModal={() => handleOpenQuoteModal()} />
 
@@ -80,14 +109,17 @@ export default function App() {
         {/* Section 10: Pricing / Quote Banner */}
         <QuoteCTA onOpenQuoteModal={() => handleOpenQuoteModal()} />
 
-        {/* Section 11 & 12: Contact */}
+        {/* Section 11: Location Map */}
+        <MapSection />
+
+        {/* Section 12 & 13: Contact */}
         <Contact 
           preselectedService={selectedServiceForQuote?.title} 
           onOpenQuoteModal={() => handleOpenQuoteModal()}
         />
       </main>
 
-      {/* Section 13: Footer */}
+      {/* Section 14: Footer */}
       <Footer />
 
       {/* Floating Action Buttons */}

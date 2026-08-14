@@ -27,7 +27,7 @@ export default function Services({ onSelectService }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4 scroll-reveal">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-amber-400 text-xs font-semibold tracking-wide">
             <span>Verified Protective Services</span>
           </div>
@@ -42,7 +42,7 @@ export default function Services({ onSelectService }) {
         </div>
 
         {/* 7 Service Cards Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 stagger-children">
           {siteConfig.services.map((service) => {
             const IconComponent = iconMap[service.icon] || ShieldAlert;
 

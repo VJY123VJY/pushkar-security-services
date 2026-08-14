@@ -27,6 +27,7 @@ export const siteConfig = {
     { label: "Why Choose Us", href: "#why-us" },
     { label: "Licence", href: "#licence" },
     { label: "Gallery", href: "#gallery" },
+    { label: "Location", href: "#location" },
     { label: "Contact", href: "#contact" },
   ],
 
