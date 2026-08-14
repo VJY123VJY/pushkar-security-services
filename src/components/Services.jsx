@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
 import { 
-  ShieldAlert, Home, Building2, Factory, Sparkles, Cross, 
-  GraduationCap, Landmark, HardHat, Check, ArrowRight, X 
+  Building2, Home, Landmark, Sparkles, Factory, ShieldAlert, 
+  Users, Check, ArrowRight, X 
 } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
 
 const iconMap = {
-  ShieldAlert,
-  Home,
   Building2,
-  Factory,
-  Sparkles,
-  Cross,
-  GraduationCap,
+  Home,
   Landmark,
-  HardHat
+  Sparkles,
+  Factory,
+  ShieldAlert,
+  Users
 };
 
 export default function Services({ onSelectService }) {
@@ -30,20 +28,20 @@ export default function Services({ onSelectService }) {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-950/80 border border-blue-800/60 text-blue-400 text-xs font-semibold tracking-wide">
-            <span>Specialized Protective Forces</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-amber-400 text-xs font-semibold tracking-wide">
+            <span>Verified Protective Services</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight font-display">
             Our Security <span className="gold-gradient-text">Services</span>
           </h2>
 
-          <p className="text-slate-400 text-base sm:text-lg">
-            We deliver tailored, vigilant, and professionally trained security personnel for every sector — ensuring maximum safety, strict access control, and complete peace of mind.
+          <p className="text-slate-300 text-base sm:text-lg">
+            Pushkar Security Services provides professional, disciplined security guard services across our full operational business scope.
           </p>
         </div>
 
-        {/* 9 Service Cards Grid */}
+        {/* 7 Service Cards Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {siteConfig.services.map((service) => {
             const IconComponent = iconMap[service.icon] || ShieldAlert;
@@ -51,7 +49,7 @@ export default function Services({ onSelectService }) {
             return (
               <div
                 key={service.id}
-                className="bg-glass-card rounded-2xl p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 group hover:-translate-y-1 relative overflow-hidden border border-slate-800"
+                className="bg-slate-900/90 rounded-2xl p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 group hover:-translate-y-1 relative overflow-hidden border border-slate-800 hover:border-amber-500/40 shadow-xl"
               >
                 {/* Subtle card glow accent */}
                 <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-amber-500/10 to-transparent rounded-bl-full pointer-events-none group-hover:from-amber-500/20 transition-all"></div>
@@ -59,11 +57,11 @@ export default function Services({ onSelectService }) {
                 <div>
                   {/* Icon & Badge Header */}
                   <div className="flex items-center justify-between mb-5">
-                    <div className="w-12 h-12 rounded-xl bg-slate-900 border border-slate-700/80 flex items-center justify-center group-hover:border-amber-500/50 group-hover:bg-amber-500/10 transition-colors shadow-inner">
+                    <div className="w-12 h-12 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center group-hover:border-amber-500/50 group-hover:bg-amber-500/10 transition-colors shadow-inner">
                       <IconComponent className="w-6 h-6 text-amber-400 group-hover:scale-110 transition-transform" />
                     </div>
 
-                    <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-slate-900 text-slate-300 border border-slate-800">
+                    <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-slate-950 text-slate-300 border border-slate-800">
                       {service.badge}
                     </span>
                   </div>
@@ -93,7 +91,7 @@ export default function Services({ onSelectService }) {
                 <div className="pt-4 border-t border-slate-800/80 flex items-center gap-3">
                   <button
                     onClick={() => setActiveModalService(service)}
-                    className="flex-1 py-2.5 rounded-xl text-xs font-semibold text-slate-300 bg-slate-900 hover:bg-slate-800 border border-slate-700 transition-colors text-center"
+                    className="flex-1 py-2.5 rounded-xl text-xs font-semibold text-slate-300 bg-slate-950 hover:bg-slate-800 border border-slate-800 transition-colors text-center"
                   >
                     View Details
                   </button>

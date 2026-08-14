@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Shield, Phone, MessageSquare, Menu, X, ChevronRight } from 'lucide-react';
+import { Phone, MessageSquare, Menu, X, ChevronRight } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
 
 export default function Navbar({ onOpenQuoteModal }) {
@@ -21,17 +21,20 @@ export default function Navbar({ onOpenQuoteModal }) {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled 
-        ? 'bg-slate-950/90 backdrop-blur-md border-b border-slate-800/80 shadow-2xl py-3' 
-        : 'bg-gradient-to-b from-slate-950 via-slate-950/80 to-transparent py-4'
+        ? 'bg-slate-950/95 backdrop-blur-md border-b border-slate-800/80 shadow-2xl py-2.5' 
+        : 'bg-gradient-to-b from-slate-950 via-slate-950/80 to-transparent py-3.5'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           
-          {/* Brand Logo */}
+          {/* Brand Logo with Real Uploaded Logo Asset */}
           <a href="#home" className="flex items-center gap-3 group">
-            <div className="relative flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-slate-900 to-slate-950 border border-amber-500/40 group-hover:border-amber-400 shadow-md shadow-amber-500/10 transition-all">
-              <Shield className="w-6 h-6 text-amber-400 group-hover:scale-110 transition-transform duration-300" />
-              <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-blue-500 rounded-full animate-pulse"></span>
+            <div className="relative flex items-center justify-center p-1 rounded-xl bg-slate-900 border border-amber-500/40 group-hover:border-amber-400 shadow-md shadow-amber-500/10 transition-all overflow-hidden bg-white/5">
+              <img 
+                src={siteConfig.logoAsset} 
+                alt="Pushkar Security Services logo" 
+                className="w-10 h-10 object-contain rounded-lg group-hover:scale-105 transition-transform duration-300"
+              />
             </div>
             <div>
               <div className="font-extrabold text-lg sm:text-xl tracking-tight text-white flex items-center gap-1.5 font-display">
@@ -56,14 +59,14 @@ export default function Navbar({ onOpenQuoteModal }) {
             ))}
           </nav>
 
-          {/* Desktop Call & WhatsApp Action Buttons */}
+          {/* Desktop Action Buttons */}
           <div className="hidden lg:flex items-center gap-3">
             <a
               href={siteConfig.telUrl}
               className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold text-white bg-slate-800/90 hover:bg-slate-800 border border-slate-700 hover:border-slate-600 transition-all hover:scale-105"
             >
-              <Phone className="w-3.5 h-3.5 text-blue-400" />
-              <span>Call Now</span>
+              <Phone className="w-3.5 h-3.5 text-amber-400" />
+              <span>Call Now ({siteConfig.phone})</span>
             </a>
 
             <a
@@ -84,11 +87,11 @@ export default function Navbar({ onOpenQuoteModal }) {
             </button>
           </div>
 
-          {/* Mobile Menu Toggle Button */}
+          {/* Mobile Menu Toggle */}
           <div className="flex items-center gap-2 lg:hidden">
             <a
               href={siteConfig.telUrl}
-              className="flex items-center justify-center w-9 h-9 rounded-lg bg-blue-600/90 text-white hover:bg-blue-500 transition-colors"
+              className="flex items-center justify-center w-9 h-9 rounded-lg bg-amber-500/20 text-amber-400 border border-amber-500/40 hover:bg-amber-500 hover:text-slate-950 transition-colors"
               aria-label="Call Now"
             >
               <Phone className="w-4 h-4" />
@@ -106,7 +109,7 @@ export default function Navbar({ onOpenQuoteModal }) {
         </div>
       </div>
 
-      {/* Mobile Drawer Navigation */}
+      {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div className="lg:hidden bg-slate-950/95 backdrop-blur-xl border-b border-slate-800 px-4 pt-4 pb-6 mt-3 animate-in slide-in-from-top duration-300 shadow-2xl">
           <div className="flex flex-col gap-2">
@@ -129,7 +132,7 @@ export default function Navbar({ onOpenQuoteModal }) {
                 href={siteConfig.telUrl}
                 className="flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl text-xs font-semibold text-white bg-slate-900 border border-slate-700"
               >
-                <Phone className="w-4 h-4 text-blue-400" />
+                <Phone className="w-4 h-4 text-amber-400" />
                 <span>Call Now</span>
               </a>
 
@@ -151,7 +154,7 @@ export default function Navbar({ onOpenQuoteModal }) {
               }}
               className="mt-2 w-full py-3 rounded-xl text-xs font-bold text-slate-950 bg-amber-400 hover:bg-amber-300 transition-all text-center shadow-lg"
             >
-              Get a Free Quote
+              Get Free Quote
             </button>
           </div>
         </div>

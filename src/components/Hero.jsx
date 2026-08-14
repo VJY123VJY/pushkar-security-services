@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Phone, CheckCircle2, Award, Clock, Users, ArrowRight } from 'lucide-react';
+import { ShieldCheck, Phone, CheckCircle2, Clock, ArrowRight } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
 
 export default function Hero({ onOpenQuoteModal }) {
@@ -28,9 +28,9 @@ export default function Hero({ onOpenQuoteModal }) {
               <span className="gold-gradient-text">Trusted Protection.</span>
             </h1>
 
-            {/* Subheading */}
+            {/* Description */}
             <p className="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl">
-              {siteConfig.name} provides professional, disciplined security guard services to safeguard your residential societies, commercial offices, industrial sites, and events — 24/7.
+              Pushkar Security Services provides professional, disciplined security guard services to safeguard residential societies, commercial offices, industrial sites, open plots, hotels, and events.
             </p>
 
             {/* Main Action Buttons */}
@@ -39,7 +39,7 @@ export default function Hero({ onOpenQuoteModal }) {
                 onClick={onOpenQuoteModal}
                 className="flex items-center justify-center gap-2 px-7 py-4 rounded-xl text-sm font-bold text-slate-950 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 hover:from-amber-300 hover:to-amber-400 transition-all shadow-xl shadow-amber-500/20 hover:scale-[1.02]"
               >
-                <span>Get a Free Quote</span>
+                <span>Get Free Quote</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
 
@@ -47,8 +47,8 @@ export default function Hero({ onOpenQuoteModal }) {
                 href={siteConfig.telUrl}
                 className="flex items-center justify-center gap-3 px-7 py-4 rounded-xl text-sm font-bold text-white bg-slate-900 hover:bg-slate-800 border border-slate-700 hover:border-slate-600 transition-all hover:scale-[1.02]"
               >
-                <Phone className="w-4 h-4 text-blue-400" />
-                <span>Call {siteConfig.phone}</span>
+                <Phone className="w-4 h-4 text-amber-400" />
+                <span>Call Now: {siteConfig.phone}</span>
               </a>
             </div>
 
@@ -66,7 +66,7 @@ export default function Hero({ onOpenQuoteModal }) {
 
           </div>
 
-          {/* Right Hero Visual Card */}
+          {/* Right Hero Visual Card - Fixed Real Security Guards Photograph */}
           <div className="lg:col-span-5 relative">
             <div className="relative mx-auto max-w-md lg:max-w-none">
               
@@ -74,31 +74,32 @@ export default function Hero({ onOpenQuoteModal }) {
               <div className="absolute -inset-1 bg-gradient-to-r from-amber-500/30 to-blue-600/30 rounded-3xl blur-xl opacity-75"></div>
 
               <div className="relative rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl">
-                {/* Hero Image */}
+                {/* Real Pushkar Security Guards Photograph */}
                 <img
-                  src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&q=80&w=1200"
-                  alt="Trained Pushkar Security Guard on duty protecting residential and commercial property"
-                  className="w-full h-[380px] sm:h-[440px] object-cover object-top hover:scale-105 transition-transform duration-700"
+                  src={siteConfig.guardsAsset}
+                  alt="Pushkar Security Services security guards deployed at an industrial site"
+                  className="w-full h-[400px] sm:h-[460px] object-cover object-top hover:scale-105 transition-transform duration-700"
+                  loading="eager"
                 />
 
-                {/* Overlaid Badges */}
+                {/* Gradient vignette overlay for text legibility */}
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
 
-                {/* Floating Stat Badge 1 - Top Right */}
-                <div className="absolute top-4 right-4 bg-glass p-3 rounded-xl border border-slate-700/60 shadow-xl flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-amber-500/20 border border-amber-500/40 flex items-center justify-center">
+                {/* Floating Badge 1 - Verified & Trained Security Force */}
+                <div className="absolute top-4 right-4 bg-slate-900/90 backdrop-blur-md p-3 rounded-xl border border-slate-700/60 shadow-xl flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-amber-500/20 border border-amber-500/40 flex items-center justify-center flex-shrink-0">
                     <ShieldCheck className="w-5 h-5 text-amber-400" />
                   </div>
                   <div>
-                    <p className="text-xs font-semibold text-white">Verified Force</p>
-                    <p className="text-[10px] text-slate-300">Trained Personnel</p>
+                    <p className="text-xs font-bold text-white">Verified & Trained Force</p>
+                    <p className="text-[10px] text-slate-300">Pushkar Guard Deployment</p>
                   </div>
                 </div>
 
-                {/* Floating Stat Badge 2 - Bottom Left */}
+                {/* Floating Badge 2 - 24/7 Security Cover */}
                 <div className="absolute bottom-4 left-4 right-4 bg-slate-900/90 backdrop-blur-md p-4 rounded-xl border border-slate-800 shadow-2xl flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-lg bg-blue-600/20 border border-blue-500/40 flex items-center justify-center">
+                    <div className="w-9 h-9 rounded-lg bg-blue-600/20 border border-blue-500/40 flex items-center justify-center flex-shrink-0">
                       <Clock className="w-5 h-5 text-blue-400" />
                     </div>
                     <div>
@@ -110,7 +111,7 @@ export default function Hero({ onOpenQuoteModal }) {
                     href={siteConfig.whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-3 py-1.5 rounded-lg text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 transition-colors"
+                    className="px-3.5 py-1.5 rounded-lg text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 transition-colors shadow-md"
                   >
                     Enquire
                   </a>

@@ -1,79 +1,84 @@
 import React from 'react';
-import { UserCheck, Clock, Award, Zap, Sliders, Headphones, ShieldCheck } from 'lucide-react';
+import { UserCheck, Clock, Award, ShieldCheck, Sliders, ArrowRight, Shield } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
 
-const iconMap = {
-  UserCheck,
-  Clock,
-  Award,
-  Zap,
-  Sliders,
-  Headphones
-};
+// Safe icon map — Flame may not exist in all lucide versions, use Shield as fallback
+const Flame = Shield;
 
 export default function WhyChooseUs({ onOpenQuoteModal }) {
+  const iconsMap = {
+    UserCheck,
+    Clock,
+    Award,
+    ShieldCheck,
+    Flame,
+    Sliders
+  };
+
   return (
-    <section id="why-us" className="py-20 md:py-28 bg-slate-900/50 relative border-t border-slate-900">
+    <section id="why-us" className="py-20 md:py-28 bg-slate-950 relative border-t border-slate-900">
       
-      {/* Glow background accent */}
-      <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
+      {/* Background ambient lighting */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold tracking-wide">
-            <ShieldCheck className="w-3.5 h-3.5" />
-            <span>Uncompromised Vigilance & Integrity</span>
+        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-slate-300 text-xs font-semibold">
+            <ShieldCheck className="w-4 h-4 text-amber-400" />
+            <span>Verifiable Trust & Discipline</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight font-display">
             Why Choose <span className="gold-gradient-text">Pushkar Security Services?</span>
           </h2>
 
-          <p className="text-slate-400 text-base sm:text-lg">
-            We focus on strict discipline, thorough background screening, active field supervision, and prompt communication to safeguard your property and citizens.
+          <p className="text-slate-300 text-base sm:text-lg leading-relaxed">
+            Built on strict operational discipline, verified personnel, and active supervisory oversight.
           </p>
         </div>
 
-        {/* Feature Cards Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {siteConfig.whyChooseUs.map((item, index) => {
-            const IconComponent = iconMap[item.icon] || UserCheck;
-
+        {/* 6 Feature Cards Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {siteConfig.whyChooseUs.map((item, idx) => {
+            const IconComponent = iconsMap[item.icon] || ShieldCheck;
             return (
               <div
-                key={index}
-                className="bg-slate-900/80 border border-slate-800 rounded-2xl p-7 hover:border-amber-500/40 hover:bg-slate-900 transition-all duration-300 group shadow-lg"
+                key={idx}
+                className="bg-slate-900/90 border border-slate-800 hover:border-amber-500/40 p-6 sm:p-7 rounded-2xl transition-all duration-300 hover:-translate-y-1 shadow-xl hover:shadow-amber-500/5 group text-left flex flex-col justify-between"
               >
-                <div className="w-14 h-14 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center mb-6 group-hover:border-amber-500/40 group-hover:bg-amber-500/10 transition-colors">
-                  <IconComponent className="w-7 h-7 text-amber-400 group-hover:scale-110 transition-transform" />
+                <div className="space-y-4">
+                  <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <IconComponent className="w-6 h-6 text-amber-400" />
+                  </div>
+
+                  <h3 className="text-lg font-bold text-white group-hover:text-amber-400 transition-colors">
+                    {item.title}
+                  </h3>
+
+                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                    {item.desc}
+                  </p>
                 </div>
 
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-amber-400 transition-colors">
-                  {item.title}
-                </h3>
-
-                <p className="text-slate-300 text-sm leading-relaxed">
-                  {item.desc}
-                </p>
+                <div className="pt-5 mt-4 border-t border-slate-800/80 flex items-center justify-between">
+                  <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Verifiable Standard</span>
+                  <span className="w-2 h-2 rounded-full bg-amber-400"></span>
+                </div>
               </div>
             );
           })}
         </div>
 
-        {/* Grounded Commitment Note */}
-        <div className="mt-12 bg-slate-950/80 border border-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="space-y-1 text-center md:text-left">
-            <h4 className="text-lg font-bold text-white">Need a custom security force deployment?</h4>
-            <p className="text-slate-400 text-sm">We provide tailored guard shifts, supervisor checks, and duty rosters suited to your site.</p>
-          </div>
-
+        {/* CTA Strip */}
+        <div className="mt-14 text-center">
           <button
             onClick={onOpenQuoteModal}
-            className="px-6 py-3.5 rounded-xl text-xs font-bold text-slate-950 bg-amber-400 hover:bg-amber-300 transition-all shadow-lg flex-shrink-0"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-sm font-bold text-slate-950 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 transition-all shadow-xl shadow-amber-500/20 hover:scale-105"
           >
-            Consult With Our Team
+            <span>Request Security Guard Deployment</span>
+            <ArrowRight className="w-4 h-4" />
           </button>
         </div>
 

@@ -1,13 +1,15 @@
 import React from 'react';
-import { X, Shield, Phone, MessageSquare } from 'lucide-react';
+import { X, Phone, MessageSquare } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
 
 export default function LightboxModal({ item, onClose, onOpenQuoteModal }) {
   if (!item) return null;
 
+  const isLicence = item.isLicence || item.category === 'Licence' || item.url === siteConfig.licenceAsset;
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-md animate-in fade-in">
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl max-w-3xl w-full overflow-hidden relative shadow-2xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-md animate-in fade-in overflow-y-auto">
+      <div className="bg-slate-900 border border-slate-800 rounded-2xl max-w-3xl w-full overflow-hidden relative shadow-2xl my-8">
         
         {/* Close Button */}
         <button
@@ -19,26 +21,26 @@ export default function LightboxModal({ item, onClose, onOpenQuoteModal }) {
         </button>
 
         {/* Lightbox Image */}
-        <div className="relative h-72 sm:h-96 bg-slate-950 overflow-hidden">
+        <div className={`relative bg-slate-950 overflow-hidden ${isLicence ? 'max-h-[75vh] p-4 flex items-center justify-center' : 'h-72 sm:h-96'}`}>
           <img
             src={item.url}
-            alt={item.title}
-            className="w-full h-full object-cover"
+            alt={item.title || "Document / Asset preview"}
+            className={`w-full ${isLicence ? 'max-h-[70vh] object-contain rounded-lg shadow-2xl' : 'h-full object-cover'}`}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+          {!isLicence && <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>}
         </div>
 
         {/* Info Content */}
-        <div className="p-6 space-y-4">
+        <div className="p-6 space-y-4 text-left">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400">
-              {item.category} Security
+              {item.category || 'Official Document'}
             </span>
             <span className="text-xs text-slate-400">Pushkar Security Services</span>
           </div>
 
-          <h3 className="text-2xl font-bold text-white">{item.title}</h3>
-          <p className="text-slate-300 text-sm leading-relaxed">{item.desc}</p>
+          <h3 className="text-xl sm:text-2xl font-bold text-white">{item.title || "Government Security Agency Licence"}</h3>
+          {item.desc && <p className="text-slate-300 text-sm leading-relaxed">{item.desc}</p>}
 
           <div className="pt-4 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-center gap-3">
@@ -46,7 +48,7 @@ export default function LightboxModal({ item, onClose, onOpenQuoteModal }) {
                 href={siteConfig.telUrl}
                 className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold text-white bg-slate-800 hover:bg-slate-700 border border-slate-700"
               >
-                <Phone className="w-4 h-4 text-blue-400" />
+                <Phone className="w-4 h-4 text-amber-400" />
                 <span>Call {siteConfig.phone}</span>
               </a>
 
@@ -68,7 +70,7 @@ export default function LightboxModal({ item, onClose, onOpenQuoteModal }) {
               }}
               className="px-5 py-2.5 rounded-xl text-xs font-bold text-slate-950 bg-amber-400 hover:bg-amber-300 transition-all shadow-md"
             >
-              Request Quote For This Service
+              Get Free Quote
             </button>
           </div>
 

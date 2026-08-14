@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, Phone, MessageSquare, MapPin, Mail, ArrowUp } from 'lucide-react';
+import { Phone, MessageSquare, MapPin, ArrowUp } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
 
 export default function Footer() {
@@ -8,17 +8,21 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-slate-950 border-t border-slate-900 text-slate-400 relative pt-16 pb-24 md:pb-12">
+    <footer className="bg-slate-950 border-t border-slate-900 text-slate-400 relative pt-16 pb-24 md:pb-12 text-left">
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-slate-900">
           
-          {/* Brand Col */}
+          {/* Brand Col with Real Logo */}
           <div className="lg:col-span-5 space-y-4">
             <a href="#home" className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-slate-900 border border-amber-500/40 flex items-center justify-center">
-                <Shield className="w-5 h-5 text-amber-400" />
+              <div className="flex items-center justify-center p-1 rounded-xl bg-slate-900 border border-amber-500/40 shadow-md">
+                <img 
+                  src={siteConfig.logoAsset} 
+                  alt="Pushkar Security Services logo" 
+                  className="w-10 h-10 object-contain rounded-lg"
+                />
               </div>
               <div>
                 <span className="font-extrabold text-lg text-white font-display tracking-tight">PUSHKAR</span>
@@ -26,12 +30,12 @@ export default function Footer() {
               </div>
             </a>
 
-            <p className="text-slate-300 text-sm italic font-medium">
-              "{siteConfig.tagline}"
+            <p className="text-amber-400 text-xs font-semibold uppercase tracking-wider">
+              Pushkar Security Services — Professional Security Services & Protective Force
             </p>
 
             <p className="text-slate-400 text-xs leading-relaxed max-w-sm">
-              Providing dependable security personnel and customized protection solutions for residential societies, commercial offices, industrial sites, and institutional clients.
+              Providing disciplined security personnel and customized protection solutions for residential societies, commercial offices, industrial sites, open plots, hotels, and events.
             </p>
           </div>
 
@@ -51,12 +55,12 @@ export default function Footer() {
 
           {/* Contact Details */}
           <div className="lg:col-span-4 space-y-3">
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider">Direct Contact</h4>
+            <h4 className="text-sm font-bold text-white uppercase tracking-wider">Contact Us</h4>
             
             <div className="space-y-2.5 text-xs">
               <a href={siteConfig.telUrl} className="flex items-center gap-2.5 text-slate-300 hover:text-amber-400 transition-colors">
-                <Phone className="w-4 h-4 text-blue-400 flex-shrink-0" />
-                <span>{siteConfig.phone}</span>
+                <Phone className="w-4 h-4 text-amber-400 flex-shrink-0" />
+                <span>Call Helpline: {siteConfig.phone}</span>
               </a>
 
               <a href={siteConfig.whatsappUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5 text-slate-300 hover:text-emerald-400 transition-colors">
@@ -66,7 +70,7 @@ export default function Footer() {
 
               <div className="flex items-start gap-2.5 text-slate-400 pt-1">
                 <MapPin className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
-                <span>{siteConfig.address}</span>
+                <span className="leading-snug">{siteConfig.address}</span>
               </div>
             </div>
 
@@ -79,7 +83,7 @@ export default function Footer() {
           <p>© 2026 Pushkar Security Services. All Rights Reserved.</p>
           
           <div className="flex items-center gap-4">
-            <span className="text-[11px] text-slate-400">Professional Guard & Security Agency</span>
+            <span className="text-[11px] text-slate-400">Licensed Private Security Agency (MH)</span>
             <button
               onClick={scrollToTop}
               className="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:bg-slate-800 transition-all"
